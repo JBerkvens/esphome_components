@@ -11,6 +11,7 @@ void SeesawBinarySensor::setup() {
   this->parent_->set_pinmode(this->pin_, gpio::FLAG_PULLUP);
   this->parent_->set_gpio_interrupt(this->pin_, true);
   this->publish_initial_state(this->parent_->digital_read(this->pin_));
+  this->parent_->set_i2c_id(this->i2c_id_, true);
 }
 
 void SeesawBinarySensor::dump_config() {

@@ -1,7 +1,7 @@
 import esphome.codegen as cg
 import esphome.config_validation as cv
 from esphome.components import binary_sensor
-from esphome.const import CONF_ID, CONF_PIN
+from esphome.const import CONF_ID, CONF_PIN, CONF_I2C_ID
 from .. import seesaw_ns, Seesaw, CONF_SEESAW
 
 SeesawBinarySensor = seesaw_ns.class_(
@@ -24,4 +24,5 @@ async def to_code(config):
     seesaw = await cg.get_variable(config[CONF_SEESAW])
     cg.add(var.set_parent(seesaw))
     cg.add(var.set_pin(config[CONF_PIN]))
+    cg.add(var.set_i2c_id(config[CONF_I2C_ID]))
 
